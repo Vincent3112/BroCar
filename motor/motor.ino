@@ -8,16 +8,14 @@
 #define VITESSEMAXRANGE 255
 #define VITESSEMAX 100
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  pinMode(MOTEURAP, OUTPUT);
-  pinMode(MOTEURAM, OUTPUT);
-  pinMode(MOTEURBP, OUTPUT);
-  pinMode(MOTEURBM, OUTPUT);
-  pinMode(MOTEURAPWM, OUTPUT);
-  pinMode(MOTEURBPWM, OUTPUT);
-}
+enum direction_e{
+  forward_e, 
+  backward_e
+};
+
+int incomingByte = 0; 
+direction_e direction = forward_e;
+
 
 void avancerMoteurA() {
   digitalWrite(MOTEURAP,HIGH);
@@ -50,8 +48,23 @@ void reculerMoteurB() {
 }
 
 
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(MOTEURAP, OUTPUT);
+  pinMode(MOTEURAM, OUTPUT);
+  pinMode(MOTEURBP, OUTPUT);
+  pinMode(MOTEURBM, OUTPUT);
+  pinMode(MOTEURAPWM, OUTPUT);
+  pinMode(MOTEURBPWM, OUTPUT);
+
+  setSpeedMoteurA(50);  // half of max speed
+}
+
+
 void loop()
 {
+  /*
   avancerMoteurA();
   setSpeedMoteurA(50);  // half of max speed
   delay(4000);
@@ -64,12 +77,24 @@ void loop()
     setSpeedMoteurA(inc_speed);
     
   }
-    
-  
-  
-  
-  // put your main code here, to run repeatedly:
+  */
 
+  // send data only when you receive data:
+  if (Serial.available() > 0) {
+    // read the incoming byte:
+    incomingByte = Serial.read();
+  
+    // say what you got:
+    Serial.print("I received: ");
+    Serial.println(incomingByte, DEC);
+    if (direction == forward_e){
+      avancerMoteurA();
+      direction = backward_e;
+    } else {
+      reculerMoteurA();
+      direction = forward_e;
+    }
+  }   
 }
 
 

@@ -12,6 +12,10 @@ import time
 import threading
 import termios
 
+import serial
+
+ser = serial.Serial('/dev/ttyACM0',9600)
+
 class _Getch:
     def __init__(self):
         pass
@@ -42,35 +46,36 @@ class Controller():
 
     def ParallelFunction(self):
         while(self.running):
-            self.printLock.acquire() # will block if lock is already held
             print("..")
-            self.printLock.release()
             time.sleep(1)
+        print("Exit ParallelFunction")
 
     def GetKey(self):
         while (self.running):
             if os.name == "posix" :
                 print("key?")
                 while(1):
-                    #k=self.keyboardWatcher.getKey()
-                    k = '\x1b[A'
+                    k=self.keyboardWatcher.getKey()
                     if k!='':break
                 if k=='\x1b[A':
-                    self.printLock.acquire()
                     print("up")
-                    self.printLock.release()
+                    ser.write('1')
                 elif k=='\x1b[B':
                     print("down")
+                    ser.write('2')
                 elif k=='\x1b[C':
                     print("right")
+                    ser.write('3')
                 elif k=='\x1b[D':
                     print("left")
+                    ser.write('4')
                 elif k=='\x1b':
                     print("alert")
                 else:
                     print("not an arrow key! : " + str(k))
                     self.running = False
                     sys.exit(0)
+                    print("on le voit pas")
 
             elif platform.system() == "Darwin":
                 print("in")
@@ -84,6 +89,7 @@ class Controller():
                     print("you pressed" + str(key))
 
     def Start(self):
+        
         t1 = threading.Thread(target=self.GetKey)
         t2 = threading.Thread(target=self.ParallelFunction)
         
