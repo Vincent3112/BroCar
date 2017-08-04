@@ -1,10 +1,10 @@
-//
-//  main.cpp
-//  OpenCVWebcam
-//
-//  Created by Guillaume GRANIE on 11/07/2017.
-//  Copyright © 2017 Guillaume GRANIE. All rights reserved.
-//
+/** Main program
+ *
+ * @detail The main function initiates every threads:
+ *          Communication with the arduino board
+ *          User input through keyboard
+ *          More to come ..
+ */
 
 #include <iostream>
 #include <string>
@@ -12,7 +12,6 @@
 #include <thread>
 #include <condition_variable>
 #include <mutex>
-
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -23,9 +22,6 @@ std::string stop;
 std::condition_variable cond_var;
 std::mutex m;
 
-void detectUserInput(){
-    std::cin >> stop;
-}
 
 int main(int argc, const char * argv[]) {
     // insert code here...
