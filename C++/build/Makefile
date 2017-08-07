@@ -123,6 +123,60 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+UserControl.o: UserControl.cpp.o
+
+.PHONY : UserControl.o
+
+# target to build an object file
+UserControl.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/UserControl.cpp.o
+.PHONY : UserControl.cpp.o
+
+UserControl.i: UserControl.cpp.i
+
+.PHONY : UserControl.i
+
+# target to preprocess a source file
+UserControl.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/UserControl.cpp.i
+.PHONY : UserControl.cpp.i
+
+UserControl.s: UserControl.cpp.s
+
+.PHONY : UserControl.s
+
+# target to generate assembly for a file
+UserControl.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/UserControl.cpp.s
+.PHONY : UserControl.cpp.s
+
+VideoGrabber.o: VideoGrabber.cpp.o
+
+.PHONY : VideoGrabber.o
+
+# target to build an object file
+VideoGrabber.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/VideoGrabber.cpp.o
+.PHONY : VideoGrabber.cpp.o
+
+VideoGrabber.i: VideoGrabber.cpp.i
+
+.PHONY : VideoGrabber.i
+
+# target to preprocess a source file
+VideoGrabber.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/VideoGrabber.cpp.i
+.PHONY : VideoGrabber.cpp.i
+
+VideoGrabber.s: VideoGrabber.cpp.s
+
+.PHONY : VideoGrabber.s
+
+# target to generate assembly for a file
+VideoGrabber.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/VideoGrabber.cpp.s
+.PHONY : VideoGrabber.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... UserControl.o"
+	@echo "... UserControl.i"
+	@echo "... UserControl.s"
+	@echo "... VideoGrabber.o"
+	@echo "... VideoGrabber.i"
+	@echo "... VideoGrabber.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

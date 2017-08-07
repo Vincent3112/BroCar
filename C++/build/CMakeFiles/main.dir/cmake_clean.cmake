@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o"
+  "CMakeFiles/main.dir/VideoGrabber.cpp.o"
+  "CMakeFiles/main.dir/UserControl.cpp.o"
   "main.pdb"
   "main"
 )

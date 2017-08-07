@@ -81,14 +81,66 @@ CMakeFiles/main.dir/main.cpp.o.provides: CMakeFiles/main.dir/main.cpp.o.requires
 CMakeFiles/main.dir/main.cpp.o.provides.build: CMakeFiles/main.dir/main.cpp.o
 
 
+CMakeFiles/main.dir/VideoGrabber.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/VideoGrabber.cpp.o: ../VideoGrabber.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/guiwake/Documents/Programmation/BroCar/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/VideoGrabber.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/VideoGrabber.cpp.o -c /Users/guiwake/Documents/Programmation/BroCar/C++/VideoGrabber.cpp
+
+CMakeFiles/main.dir/VideoGrabber.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/VideoGrabber.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/guiwake/Documents/Programmation/BroCar/C++/VideoGrabber.cpp > CMakeFiles/main.dir/VideoGrabber.cpp.i
+
+CMakeFiles/main.dir/VideoGrabber.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/VideoGrabber.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/guiwake/Documents/Programmation/BroCar/C++/VideoGrabber.cpp -o CMakeFiles/main.dir/VideoGrabber.cpp.s
+
+CMakeFiles/main.dir/VideoGrabber.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/VideoGrabber.cpp.o.requires
+
+CMakeFiles/main.dir/VideoGrabber.cpp.o.provides: CMakeFiles/main.dir/VideoGrabber.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/VideoGrabber.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/VideoGrabber.cpp.o.provides
+
+CMakeFiles/main.dir/VideoGrabber.cpp.o.provides.build: CMakeFiles/main.dir/VideoGrabber.cpp.o
+
+
+CMakeFiles/main.dir/UserControl.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/UserControl.cpp.o: ../UserControl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/guiwake/Documents/Programmation/BroCar/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/UserControl.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/UserControl.cpp.o -c /Users/guiwake/Documents/Programmation/BroCar/C++/UserControl.cpp
+
+CMakeFiles/main.dir/UserControl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/UserControl.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/guiwake/Documents/Programmation/BroCar/C++/UserControl.cpp > CMakeFiles/main.dir/UserControl.cpp.i
+
+CMakeFiles/main.dir/UserControl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/UserControl.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/guiwake/Documents/Programmation/BroCar/C++/UserControl.cpp -o CMakeFiles/main.dir/UserControl.cpp.s
+
+CMakeFiles/main.dir/UserControl.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/UserControl.cpp.o.requires
+
+CMakeFiles/main.dir/UserControl.cpp.o.provides: CMakeFiles/main.dir/UserControl.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/UserControl.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/UserControl.cpp.o.provides
+
+CMakeFiles/main.dir/UserControl.cpp.o.provides.build: CMakeFiles/main.dir/UserControl.cpp.o
+
+
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.cpp.o"
+"CMakeFiles/main.dir/main.cpp.o" \
+"CMakeFiles/main.dir/VideoGrabber.cpp.o" \
+"CMakeFiles/main.dir/UserControl.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cpp.o
+main: CMakeFiles/main.dir/VideoGrabber.cpp.o
+main: CMakeFiles/main.dir/UserControl.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: /usr/local/lib/libopencv_cudabgsegm.3.2.0.dylib
 main: /usr/local/lib/libopencv_cudaobjdetect.3.2.0.dylib
@@ -119,7 +171,7 @@ main: /usr/local/lib/libopencv_imgproc.3.2.0.dylib
 main: /usr/local/lib/libopencv_core.3.2.0.dylib
 main: /usr/local/lib/libopencv_cudev.3.2.0.dylib
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/guiwake/Documents/Programmation/BroCar/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/guiwake/Documents/Programmation/BroCar/C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -128,6 +180,8 @@ CMakeFiles/main.dir/build: main
 .PHONY : CMakeFiles/main.dir/build
 
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/main.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/VideoGrabber.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/UserControl.cpp.o.requires
 
 .PHONY : CMakeFiles/main.dir/requires
 
