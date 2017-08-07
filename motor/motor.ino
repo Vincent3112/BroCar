@@ -83,11 +83,31 @@ void loop()
   if (Serial.available() > 0) {
     // read the incoming byte:
     incomingByte = Serial.read();
+
   
     // say what you got:
     Serial.print("I received: ");
     Serial.println(incomingByte, DEC);
-    if (direction == forward_e){
+    if (incomingByte == 1){
+      avancerMoteurA();
+      avancerMoteurB();
+      setSpeedMoteurA(50);
+      setSpeedMoteurB(50);
+      direction = forward_e;
+    } else if (incomingByte == 2){
+      reculerMoteurA();
+      reculerMoteurB();
+      setSpeedMoteurA(50);
+      setSpeedMoteurB(50);
+      direction = backward_e;
+    } else if (incomingByte == 3||incomingByte == 4){
+      setSpeedMoteurA(0);
+      setSpeedMoteurB(0);
+    }
+  }
+}   
+    
+/*    if (direction == forward_e){
       avancerMoteurA();
       direction = backward_e;
     } else {
@@ -96,5 +116,5 @@ void loop()
     }
   }   
 }
-
+*/
 
