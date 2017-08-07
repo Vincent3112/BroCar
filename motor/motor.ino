@@ -1,10 +1,10 @@
 
 #define MOTEURAP 9
 #define MOTEURAM 8
-#define MOTEURBP 7
-#define MOTEURBM 6
+#define MOTEURBP 2
+#define MOTEURBM 4
 #define MOTEURAPWM 10
-#define MOTEURBPWM 5
+#define MOTEURBPWM 3
 #define VITESSEMAXRANGE 255
 #define VITESSEMAX 100
 
@@ -58,7 +58,8 @@ void setup() {
   pinMode(MOTEURAPWM, OUTPUT);
   pinMode(MOTEURBPWM, OUTPUT);
 
-  setSpeedMoteurA(50);  // half of max speed
+  setSpeedMoteurA(50);
+  setSpeedMoteurB(50);  // half of max speed
 }
 
 
@@ -88,19 +89,19 @@ void loop()
     // say what you got:
     Serial.print("I received: ");
     Serial.println(incomingByte, DEC);
-    if (incomingByte == 1){
+    if (incomingByte == 49){
       avancerMoteurA();
       avancerMoteurB();
       setSpeedMoteurA(50);
       setSpeedMoteurB(50);
       direction = forward_e;
-    } else if (incomingByte == 2){
+    } else if (incomingByte == 50){
       reculerMoteurA();
       reculerMoteurB();
       setSpeedMoteurA(50);
       setSpeedMoteurB(50);
       direction = backward_e;
-    } else if (incomingByte == 3||incomingByte == 4){
+    } else if (incomingByte == 51||incomingByte == 52){
       setSpeedMoteurA(0);
       setSpeedMoteurB(0);
     }
