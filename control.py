@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #import serial
-#ser = serial.Serial('/dev/ttyACM0', 9600)
+#ser = serial.Serial('/dev/ttyUSB0', 9600)
 
 # Communication with the arduino board
 
@@ -14,7 +14,7 @@ import termios
 
 import serial
 
-ser = serial.Serial('/dev/ttyACM0',9600)
+ser = serial.Serial('/dev/ttyUSB0',9600)
 
 class _Getch:
     def __init__(self):
