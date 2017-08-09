@@ -1,10 +1,10 @@
 
 #define MOTEURAP 9
 #define MOTEURAM 8
-#define MOTEURBP 2
-#define MOTEURBM 4
+#define MOTEURBP 7
+#define MOTEURBM 6
 #define MOTEURAPWM 10
-#define MOTEURBPWM 3
+#define MOTEURBPWM 5
 #define VITESSEMAXRANGE 255
 #define VITESSEMAX 100
 
@@ -16,6 +16,38 @@ enum direction_e{
 int incomingByte = 0; 
 direction_e direction = forward_e;
 
+void forward(short speed) {
+   avancerMoteurA();
+   avancerMoteurB();
+   setSpeedMoteurA(speed);
+   setSpeedMoteurB(speed);
+}
+
+void backward(short speed) {
+   reculerMoteurA();
+   reculerMoteurB();
+   setSpeedMoteurA(speed);
+   setSpeedMoteurB(speed);
+}
+
+void turnLeft(short speed) {
+  reculerMoteurA();
+  avancerMoteurB();
+  setSpeedMoteurA(speed);
+  setSpeedMoteurB(speed);
+}
+
+void turnRight(short speed) {
+  avancerMoteurA();
+  reculerMoteurB();
+  setSpeedMoteurA(speed);
+  setSpeedMoteurB(speed);
+}
+
+void stopMotors() {
+  setSpeedMoteurA(0);
+  setSpeedMoteurB(0);
+}
 
 void avancerMoteurA() {
   digitalWrite(MOTEURAP,HIGH);
@@ -39,6 +71,8 @@ void avancerMoteurB() {
 }
 
 void setSpeedMoteurB(short speed) {
+  speed=min(max(speed,0),VITESSEMAX);
+  speed=speed*VITESSEMAXRANGE/VITESSEMAX;
   analogWrite(MOTEURBPWM,speed);
 }
 
@@ -58,8 +92,7 @@ void setup() {
   pinMode(MOTEURAPWM, OUTPUT);
   pinMode(MOTEURBPWM, OUTPUT);
 
-  setSpeedMoteurA(50);
-  setSpeedMoteurB(50);  // half of max speed
+  setSpeedMoteurA(50);  // half of max speed
 }
 
 
@@ -75,11 +108,9 @@ void loop()
   {  
     Serial.println (inc_speed);
     delay(100);
-    setSpeedMoteurA(inc_speed);
-    
+    setSpeedMoteurA(inc_speed); 
   }
   */
-
   // send data only when you receive data:
   if (Serial.available() > 0) {
     // read the incoming byte:
@@ -90,22 +121,36 @@ void loop()
     Serial.print("I received: ");
     Serial.println(incomingByte, DEC);
     if (incomingByte == 49){
-      avancerMoteurA();
-      avancerMoteurB();
-      setSpeedMoteurA(50);
-      setSpeedMoteurB(50);
-      direction = forward_e;
+      do {
+        forward(50);
+        delay(500);
+        incomingByte = Serial.read();
+      } while (incomingByte == 49);
+  
     } else if (incomingByte == 50){
-      reculerMoteurA();
-      reculerMoteurB();
-      setSpeedMoteurA(50);
-      setSpeedMoteurB(50);
-      direction = backward_e;
-    } else if (incomingByte == 51||incomingByte == 52){
-      setSpeedMoteurA(0);
-      setSpeedMoteurB(0);
+        do {
+          backward(50);
+          delay(500);
+          incomingByte = Serial.read();
+        } while (incomingByte == 50);
+      
+    } else if (incomingByte == 51){
+      do {
+        turnRight(10);
+        delay(100);
+        incomingByte = Serial.read();
+     } while (incomingByte == 51);
+     
+    } else if (incomingByte == 52){
+      do {
+        turnLeft(10);
+        delay(100);
+        incomingByte = Serial.read();
+        } while (incomingByte == 52);
+      }
     }
   }
+  stopMotors();
 }   
     
 /*    if (direction == forward_e){
