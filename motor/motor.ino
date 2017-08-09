@@ -1,10 +1,10 @@
 
 #define MOTEURAP 9
 #define MOTEURAM 8
-#define MOTEURBP 7
-#define MOTEURBM 6
+#define MOTEURBP 4
+#define MOTEURBM 2
 #define MOTEURAPWM 10
-#define MOTEURBPWM 5
+#define MOTEURBPWM 3
 #define VITESSEMAXRANGE 255
 #define VITESSEMAX 100
 
@@ -123,14 +123,14 @@ void loop()
     if (incomingByte == 49){
       do {
         forward(50);
-        delay(500);
+        delay(200);
         incomingByte = Serial.read();
       } while (incomingByte == 49);
   
     } else if (incomingByte == 50){
         do {
           backward(50);
-          delay(500);
+          delay(200);
           incomingByte = Serial.read();
         } while (incomingByte == 50);
       
@@ -148,10 +148,11 @@ void loop()
         incomingByte = Serial.read();
         } while (incomingByte == 52);
       }
+stopMotors();
     }
   }
-  stopMotors();
-}   
+  
+
     
 /*    if (direction == forward_e){
       avancerMoteurA();
