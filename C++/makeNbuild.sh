@@ -9,3 +9,4 @@ echo Running MAKE to compile and link
 echo
 make
 mv main ../main
+doxygen Doxyfile
