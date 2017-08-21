@@ -12,9 +12,13 @@ import time
 import threading
 import termios
 
-import serial
+import camera as C
 
+import serial
+# Initialization of the connection to the Arduino
+# board via usb
 ser = serial.Serial('/dev/ttyUSB0',9600)
+
 
 class _Getch:
     def __init__(self):
@@ -35,11 +39,14 @@ def PrintOSData():
     print(platform.release())
 
 class Controller():
+
     def __init__(self):
         PrintOSData()
         self.running = True
         self.keyboardWatcher = _Getch()
         self.printLock = threading.Lock()
+        self.camera = C.Camera()
+
 
     def Communication(self):
         pass
@@ -91,13 +98,16 @@ class Controller():
     def Start(self):
         
         t1 = threading.Thread(target=self.GetKey)
-        t2 = threading.Thread(target=self.ParallelFunction)
+        #t2 = threading.Thread(target=self.camera.run())
         
         t1.start()
-        t2.start()
-        
+        #t2.start()
+ 
+        self.camera.run()
+
         t1.join()
-        t2.join()
+        #t2.join()
+
 
 if __name__ == "__main__":
 

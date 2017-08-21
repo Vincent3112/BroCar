@@ -81,6 +81,15 @@ void reculerMoteurB() {
   digitalWrite(MOTEURBM,HIGH);
 }
 
+void serialFlush() {
+  if (Serial.available() ) {
+    while (Serial.read() != -1){}
+    }
+  }
+
+  
+
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -122,33 +131,46 @@ void loop()
     Serial.println(incomingByte, DEC);
     if (incomingByte == 49){
       do {
-        forward(50);
-        delay(200);
-        incomingByte = Serial.read();
+        serialFlush();
+        forward(100);
+        delay(100);
+      /*if (Serial.available() > 0){*/
+        incomingByte = Serial.read();/*
+        else {(incomingByte == 0);}*/
       } while (incomingByte == 49);
   
     } else if (incomingByte == 50){
         do {
-          backward(50);
-          delay(200);
-          incomingByte = Serial.read();
+          serialFlush();
+          backward(100);
+          delay(100);
+       /* (Serial.available() > 0){*/
+        incomingByte = Serial.read();
+    /*  else{(incomingByte == 0);} */
         } while (incomingByte == 50);
       
     } else if (incomingByte == 51){
       do {
-        turnRight(10);
+        serialFlush();
+        turnRight(30);
         delay(100);
+   /*   if (Serial.available() > 0){*/
         incomingByte = Serial.read();
+  /*    else {(incomingByte == 0);} */
      } while (incomingByte == 51);
      
     } else if (incomingByte == 52){
       do {
-        turnLeft(10);
+        serialFlush();
+        turnLeft(30);
         delay(100);
+  /*    if (Serial.available() > 0){*/
         incomingByte = Serial.read();
+   /*   else {(incomingByte == 0);}*/
         } while (incomingByte == 52);
       }
-stopMotors();
+    //After action, stop the motors.  
+    stopMotors();
     }
   }
   
