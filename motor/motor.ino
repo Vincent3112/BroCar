@@ -232,9 +232,25 @@ void loop()
           incomingByte = Serial.read();
           } while (incomingByte == 52);
       }
+<<<<<<< HEAD
       
       stopMotors();
       
     }
   }
+=======
+  stopMotors();
+}   
+}
+
+    
+/*    if (direction == forward_e){
+      avancerMoteurA();
+      direction = backward_e;
+    } else {
+      reculerMoteurA();
+      direction = forward_e;
+    }
+  }   
+>>>>>>> wip
 }
