@@ -9,7 +9,7 @@ class Camera(object):
     Camera class handles all the actions relative
     to the camera and images taken from it.
     '''
-    def __init__(self, resolution=(640,480), framerate=32):
+    def __init__(self, resolution=(640, 480), framerate=32):
         self.camera = PiCamera()
         self.camera.resolution = resolution
         self.camera.framerate = framerate
@@ -17,11 +17,14 @@ class Camera(object):
 
         # allow the camera to warmup
         time.sleep(0.1)
- 
+
     def run(self):
         # capture frames from the camera
-        for frame in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
-            # grab the raw NumPy array representing the image, then initialize the timestamp
+        for frame in self.camera.capture_continuous(self.rawCapture,
+                                                    format="bgr",
+                                                    use_video_port=True):
+            # grab the raw NumPy array representing
+            #the image, then initialize the timestamp
             # and occupied/unoccupied text
             image = frame.array
 
@@ -35,4 +38,5 @@ class Camera(object):
             # if the `q` key was pressed, break from the loop
             if key == ord("q"):
                 break
+
 
